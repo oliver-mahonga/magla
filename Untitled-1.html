@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="We offer affordable internet connection and services. Powered by NikoRADIUS. cloud.nikoradius.com">
+    <meta name="csrf-token" content="dYYJk4uekcsGqQH71JS3s8x0z1XlwLl7mghW2ID7">
+    <meta name="author" content="Nikoradius">
+    <link rel="shortcut icon" href="" type="image/x-icon">
+        <!--REQUIRED STYLE SHEETS-->
+        <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>Micronet WiFi</title>
+    <!--REQUIRED STYLE SHEETS-->
+
+<!-- Styles -->
+<!-- Theme style -->
+<link media="all" type="text/css" rel="stylesheet" href="https://demob.indexwifi.com/css/client/frontend.light.css">
+
+<!-- styles -->
+    <style>
+        .guest-btn {
+            margin-top: 10px;
+        }
+        .navbar-default {
+
+            border-bottom: none;
+            background-color: #1a85c7;
+            -webkit-box-shadow: 0 5px 5px #888888;
+            -moz-box-shadow: 0 5px 5px #888888;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+        }
+        .label, .btn {
+            border-radius: 25px 25px;
+        }
+        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+            color: #fff;
+        }
+        .label-default, .btn-default {
+            background-color: #1a85c7;
+            color: #fff;
+        }
+        .label-default[href]:hover, .btn-default:hover {
+            background-color: #1a85c7;
+            color: #ddd;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #1a85c7;
+            border-color: #1a85c7;
+        }
+        .btn-primary.focus, .btn-primary:focus {
+            color: #fff;
+            background-color: #1a85c7;
+            border-color: #1a85c7;
+        }
+        .btn-primary.active, .btn-primary:active, .btn-primary:hover, .open>.btn-primary.dropdown-toggle {
+            color: #fff;
+            background-color: #1a85c7;
+            border-color: #1a85c7;
+        }
+        .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover {
+            color: #ddd;
+        }
+        .content {
+            min-height: 82vh;
+            padding: 15px;
+        }
+        .main-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.16);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .welcome-header {
+            padding-top: 70px;
+            background: #1a85c7;
+        }
+        .welcome-guest-panel {
+            background:rgba(99, 107, 111, 0.47) !important;
+        }
+        .messages {
+            margin-top: 70px;
+        }
+        .row-margin-top {
+            margin-top: 10px;
+            padding: 4px;
+        }
+        .btn-success {
+            color: #fff;
+            background-color: #1a85c7;
+            border-color: #1a85c7;
+        }
+        .panel-primary > .panel-heading {
+            color: #fff;
+            background-color: #1a85c7;
+            border-color: #1a85c7;
+        }
+        .panel-primary {
+            border-color: #1a85c7;
+        }
+        .label-danger {
+            background-color: #1a85c7;
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #1a85c7;
+            border-color: #1a85c7;
+        }
+
+        /*auto renew*/
+
+        button:hover {
+            opacity:1;
+        }
+
+        /* Float cancel and delete buttons and add an equal width */
+        .nobtn, .yesbtn {
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            opacity: 0.9;
+            float: left;
+            width: 50%;
+        }
+
+        /* Add a color to the cancel button */
+        .nobtn {
+            background-color: #ccc;
+            color: black;
+        }
+
+        /* Add a color to the delete button */
+        .yesbtn {
+            background-color: #1a85c7;
+            color: white;
+        }
+
+        .renew {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0, 0.45);
+            padding-top: 50px;
+        }
+
+        /* Modal Content/Box */
+        .renew-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 15% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+        }
+
+        .renew-container {
+            padding: 16px;
+            text-align: center;
+        }
+        .renew-clear-fix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        /* Extra small devices (phones, 600px and down) */
+        @media  only screen and (max-width: 600px) {
+            .renew-content {
+                width: 80%
+            }
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media  only screen and (min-width: 600px) {
+            .renew-content {
+                width: 70%
+            }
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media  only screen and (min-width: 768px) {
+            .renew-content {
+                width: 50%
+            }
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media  only screen and (min-width: 992px) {
+            .renew-content {
+                width: 40%
+            }
+        }
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media  only screen and (min-width: 1200px) {
+            .renew-content {
+                width: 30%
+            }
+        }
+
+        .switch-acc{
+            font-size: 12px;
+        }
+
+        .switch-acc a{
+            padding: 2px 3px !important;
+            border: 1px solid white;
+            border-radius: 20px;
+            margin-top: 7px;
+
+        }
+
+        .renew-content.account-card{
+            border-radius: 15px;
+            background: white;
+        }
+
+        .account-card .signed-in-as{
+            display: flex;
+            flex-direction:column ;
+            align-items: center;
+            justify-content: center;
+        }
+        .account-card .signed-in-as .icon{
+            font-size: 50px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            line-height: 70px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        .account-card .signed-in-as .helper-text{
+            font-size: 12px;
+        }
+
+        span.badge-label{
+            background: forestgreen;
+            color: white;
+            font-size: 10px;
+            border-radius: 5px;
+            padding: 2px;
+        }
+
+        span.badge-label.child{
+            background: gray;
+        }
+
+        .emphasis{
+            font-weight: bold;
+            color: #1a85c7;
+
+        }
+        .account-card .signed-in-as p{
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+        .list-account{
+            display: flex;
+            border: 1px solid whitesmoke;
+            border-radius: 7px;
+            margin: 5px 20px;
+            padding: 0px 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-account h1{
+            font-size: 12px !important;
+            margin: 0;
+        }
+
+        .list-account .btn{
+            font-size: 12px;
+            padding: 3px 10px !important;
+            height: 30px;
+        }
+
+        .signout{
+            display: flex;justify-content: center;
+            padding:10px
+        }
+        .signout .btn{
+            /*background: #35b992;*/
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+
+
+    <link media="all" type="text/css" rel="stylesheet" href="https://demob.indexwifi.com/css/nas_ops.css">
+
+        <style type="text/css">
+            .net-bg{
+                background: #1a85c7 !important;
+            }
+        </style>
+
+
+        <style>
+        .panel {
+            box-shadow: 2px 4px 9px 0px rgba(0,0,0,.05) !important;
+        }
+        .messages {
+            margin-top: 20px !important;
+            position: absolute;
+            top: 0;
+            z-index: 9999;
+        }
+        #packages .panel-heading{
+            max-height:140px;
+            height: 140px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /*text-shadow: 0px -9px 10px black;*/
+            box-shadow: 9px 9px 20px 0px #999;
+        }
+        h1 .label{
+            margin-bottom: 10px;
+        }
+        .promo {
+            color: #FFF;
+            text-decoration:underline;
+        }
+    </style>
+        <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!-- Scripts -->
+<script>
+    window.Laravel = {'csrfToken': 'dYYJk4uekcsGqQH71JS3s8x0z1XlwLl7mghW2ID7'};
+</script>
+<body>
+<div class="wrapper">
+    <!-- NAV SECTION -->
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="https://demob.indexwifi.com/home" class="navbar-brand" style="font-size: 24px;">Micronet WiFi</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://demob.indexwifi.com/home">Home</a></li>
+				<li><a href="https://demob.indexwifi.com/help">Help</a></li>
+								<li><a href="https://demob.indexwifi.com/client/register">Register</a></li>
+				<li><a id="loginUrlToggle" href="https://demob.indexwifi.com/client/login">Login</a></li>
+                			</ul>
+		</div>
+	</div>
+    </div>
+<!--END NAV SECTION -->
+    <div class="content-wrapper">
+        <div class="container messages">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                                    </div>
+            </div>
+        </div>
+        <div class="content">
+            <!-- MAIN CONTENT -->
+
+            <div class="row welcome-header">
+        <div class="col-md-5 text-center">
+            <div class="brand">
+                <img src="https://demob.indexwifi.com/storage/logos/Ms4kbq85IuuBnllap6bQ0JNeyyROwq3vJoXOdPWw.png" style="width: 200px; margin: auto;" class="img img-responsive" alt="Micronet WiFi">
+                <h2 style="color:#FFF;font-size: 14px; font-weight:bold;">Access Fast and Affordable Internet</h2>
+                <p class="label label-danger">Dear Customer, for help call Micronet on  0745442734</p><br>
+                <br>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <div class="panel welcome-guest-panel">
+                <div class="panel-body">
+                                            <div class="guest-btn">
+                            <a href="https://demob.indexwifi.com/client/login" class="btn btn-success btn-block">Access Internet</a>
+                        </div>
+                        <div class="guest-btn">
+                            <a href="#how-to-reg" class="btn btn-danger btn-block">How it works</a>
+                        </div>
+                                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h4>Micronet WiFi Internet Plans</h4>
+            <p>Top up your account and choose a bundle to buy.</p>
+        </div>
+    </div>
+    <div class="row" id="packages">
+        <div class="col-sm-offset-2 col-sm-8">
+                        <div class="row"  id="packages">
+                                                        <a href="https://demob.indexwifi.com/client/plan/1lr7LVG8x9doegq/buy" class="purchase-plan">
+                        <div class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center"><b> Daily 120MBs @5/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/x7g1Wz8gbPd0pPl/buy" class="purchase-plan">
+                        <div class="col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-success">
+                                <div class="panel-heading text-center"><b> Daily 300MBs @10/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/agepOdRMP2VXnjY/buy" class="purchase-plan">
+                        <div class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center"><b> Daily 1GB @20/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/0Yre1znKab4qEba/buy" class="purchase-plan">
+                        <div class="col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-success">
+                                <div class="panel-heading text-center"><b> Daily 2GBs @30/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/QR72a4r5Alz8ve6/buy" class="purchase-plan">
+                        <div class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center"><b> Weekly 2GBs @50/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/P7OQ94Y69XVyXoa/buy" class="purchase-plan">
+                        <div class="col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-success">
+                                <div class="panel-heading text-center"><b> Fast Daily Unlimited @80/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/mjapqd6yvZVxYyQ/buy" class="purchase-plan">
+                        <div class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center"><b> Ultrafast Daily Unlimited @100/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/K6brq4ynZaVNA8w/buy" class="purchase-plan">
+                        <div class="col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-success">
+                                <div class="panel-heading text-center"><b> Weekly 7GB @150/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/76yWN430ZkVg902/buy" class="purchase-plan">
+                        <div class="col-xs-offset-1 col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading text-center"><b> Weekly Unlimited @350/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                                                        <a href="https://demob.indexwifi.com/client/plan/Ra5nYdxk5kVX2j7/buy" class="purchase-plan">
+                        <div class="col-xs-5 col-sm-offset-0 col-sm-6 col-md-3">
+                            <div class="panel panel-success">
+                                <div class="panel-heading text-center"><b> 4Mbps Monthly Unlimited @1200/-</b></div>
+                            </div>
+                        </div>
+                    </a>
+                            </div>
+                            <a href="https://demob.indexwifi.com/client/login" class="text-center">Login</a> or <a href="https://demob.indexwifi.com/client/register" class="text-center">Register</a> to view more packages
+                    </div>
+    </div>
+    <div id="how-to-reg" class="row row-margin-top">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>To enjoy browsing :- </h3>
+                </div>
+                <div class="panel-body">
+                    <ol class='center'>
+                        <li>Click on register (<a href='https://demob.indexwifi.com/client/register'>go to register</a>).</li>
+                        <li>Enter the details as they are (phone, username and pin)</li>
+                        <li>Verify your phone number</li>
+                        <li>Choose your preferred internet plan</li>
+                        <li>Top up via Lipa na Mpesa till number:<strong>780212</strong></li>
+                        <li>
+                            Go to buy internet bundle
+                        </li>
+                        <li>Enjoy browsing.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- MAIN CONTENT -->
+            <div id="renew-modal" class="renew">
+                <form class="renew-content" id="purchase-plan-form">
+                    <div class="renew-container">
+                        <h3>Auto Renew Plan</h3>
+                        <p>Would you like renew plan automatically after it expires</p>
+                        <p><small>Purchasing without auto renew in <span id="renew-delay"></span></small></p>
+                        <div class="renew-clear-fix">
+                            <button type="button" class="nobtn" onclick="buyPlan()">No</button>
+                            <button type="button" class="yesbtn" onclick="acceptRenew()">Yes</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+                    </div>
+    </div>
+    <!-- FOOTER -->
+<!--FOOTER SECTION -->
+<div class="main-footer text-center">
+	<strong>Copyright &copy; 2023 <a href="https://demob.indexwifi.com/home">Micronet WiFi</a>.</strong>
+</div>
+<!-- END FOOTER SECTION -->
+<!-- FOOTER -->
+</div>
+<!-- JavaScripts -->
+<!-- Main JavaScript -->
+<script src="https://demob.indexwifi.com/js/client/frontend.js"></script>
+
+<!-- ERYXLABS -->
+
+
+
+
+
+<script type="text/javascript">
+    window.customer='0'
+    domain = 'networks.indexwifi.com'
+    window.nas_check_url=`https://${domain}/nas_check.html`
+    window.check_voucher_url=`https://demob.indexwifi.com/client/vouchers/undefined/get`
+    window.nas_update_url='https://demob.indexwifi.com/client/update/nas'
+    window.nas_login_url=`https://${domain}/login?username=$username&password=$password`
+    window.nas_status_url=`https://${domain}/status`
+    window.nas_html_target='nas_check'
+    window.has_auth=false
+    </script>
+<script src="https://demob.indexwifi.com/js/nas_ops.js"></script>
+
+
+
+
+
+<!-- More JavaScripts -->
+
+    <script>
+        let href;
+        function interceptClickEvent(e) {
+            e.preventDefault();
+            let target = e.target || e.srcElement, delay = 8;
+            href = target.closest('.purchase-plan').getAttribute('href');
+            document.getElementById('renew-delay').innerText = delay;
+            document.getElementById('renew-modal').style.display='block';
+            let autoRenewInterval = setInterval(function () {
+                delay--;
+                if (delay < 1){
+                    buyPlan()
+                    clearInterval(autoRenewInterval)
+                } else {
+                    document.getElementById('renew-delay').innerText = delay;
+                }
+            }, 1000)
+        }
+
+        function acceptRenew(){
+            href = `${href}?auto=true`;
+            setTimeout(() => buyPlan(), 100)
+        }
+
+        function buyPlan(){
+            location.href = href;
+        }
+
+        if (document.addEventListener) {
+            let x = document.getElementsByClassName('purchase-plan');
+            for (let i = 0, l = x.length; i < l; i++) {
+                x[i].addEventListener('click', interceptClickEvent);
+            }
+        }
+
+
+    </script>
+
+<script>
+    function openAccountModal(){
+        document.getElementById('account-modal').style.display='block';
+
+    }
+    function closeSwitchModal(){
+        document.getElementById('account-modal').style.display='none';
+
+    }
+</script>
+
+</body>
+</html>
